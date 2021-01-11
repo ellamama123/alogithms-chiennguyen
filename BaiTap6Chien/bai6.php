@@ -45,16 +45,19 @@ $product = array(
 );
 function findProduct($listProduct,$price)
 {
+    $arr = array();
     foreach($listProduct as $key => $value)
     {
         if($value->getPrice() <= $price)
         {
-            $value->show();
+            $arr[] = $value;
         }
+        
     }
+    return $arr;
 }
 echo 'Sản phẩm có price nhỏ hơn 200 <br/>'; 
-findProduct($product,200);
+var_dump(findProduct($product,200));
 
 
 ?>
