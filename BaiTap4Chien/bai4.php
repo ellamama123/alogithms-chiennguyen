@@ -49,12 +49,13 @@ function findProduct($product,$name)
     {
         if($value->getName() == $name)
         {
-            $value->show();
+            return $value;
         }
+        return null;
     }
 }
 echo 'Sản phẩm có tên là CPU <br/>'; 
-findProduct($product,"CPU");
+var_dump(findProduct($product,"CPU"));
 
 
 ?>
