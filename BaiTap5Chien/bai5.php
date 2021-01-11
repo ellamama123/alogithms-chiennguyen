@@ -45,16 +45,18 @@ $product = array(
 );
 function findProduct($listProduct,$categoryId)
 {
+    $arr = array();
     foreach($listProduct as $key => $value)
     {
         if($value->getCategoryId() == $categoryId)
         {
-            $value->show();
+            $arr[] = $value;
         }
     }
+    return $arr;
 }
 echo 'Sản phẩm có categoryId là 1 <br/>'; 
-findProduct($product,1);
+var_dump(findProduct($product,1));
 
 
 ?>
