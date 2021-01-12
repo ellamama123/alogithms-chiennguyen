@@ -1,7 +1,7 @@
 <?php 
 
 class Product {
-    private $name,$price,$quality,$categoryId,$categoryName;
+    private $name,$price,$quality,$categoryId;
     public function __construct($name,$price,$quality,$categoryId)
     {
         $this->name = $name;
@@ -27,10 +27,6 @@ class Product {
     {
         return $this->categoryId;
     }
-    public function setCategoryName($name)
-    {
-        $this->categoryName = $name;
-    }
     public function show()
     {
         print( 'Name : ' . $this->name . '  Price : '. $this->price . '  Quality : '. $this->quality . '   CategoryID : ' . $this->categoryId . '<br/>');
@@ -38,32 +34,30 @@ class Product {
 
 }
 
-$product = array(
-    0 => new Product("CPU",750,10,1),
-    1 => new Product("RAM",50,2,2),
-    2 => new Product("HDD",70,1,2),
-    3 => new Product("Main",400,3,1),
-    4 => new Product("Keyboadrd",40,8,4),
-    5 => new Product("Mouse",25,50,4),
-    6 => new Product("VGA",60,3,3),
-    7 => new Product("Monitor",120,28,2),
-    8 => new Product("Case",120,28,5),
+$products = array(
+    new Product("CPU",750,10,1),
+    new Product("RAM",50,2,2),
+    new Product("HDD",70,1,2),
+    new Product("Main",400,3,1),
+    new Product("Keyboadrd",40,8,4),
+    new Product("Mouse",25,50,4),
+    new Product("VGA",60,3,3),
+    new Product("Monitor",120,28,2),
+    new Product("Case",120,28,5),
 );
 
 
 function minByPrice($listProduct)  { 
-   $min = $listProduct[0]->getPrice();
-   $pos = 0 ;
-   for($i = 0 ; $i< count($listProduct) - 1 ; $i++)
+   $minPro = $listProduct[0];
+   for($i = 1 ; $i< count($listProduct) - 1 ; $i++)
    {
-       if($min>$listProduct[$i]->getPrice())
+       if($minPro->getPrice()>$listProduct[$i]->getPrice())
        {
-           $min = $listProduct[$i]->getPrice();
-           $pos = $i;
+           $minPro = $listProduct[$i];
        }
    }
-   return $listProduct[$pos];
+   return $minPro;
 }
-var_dump(minByPrice($product));
+var_dump(minByPrice($products));
 
 ?>
