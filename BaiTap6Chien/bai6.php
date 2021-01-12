@@ -32,32 +32,33 @@ class Product {
     }
 
 }
-$product = array(
-    "0" => new Product("CPU",750,10,1),
-    "1" => new Product("RAM",50,2,2),
-    "2" => new Product("HDD",70,1,2),
-    "3" => new Product("Main",400,3,1),
-    "4" => new Product("Keyboadrd",40,8,4),
-    "5" => new Product("Mouse",25,50,4),
-    "6" => new Product("VGA",60,3,3),
-    "7" => new Product("Monitor",120,28,2),
-    "8" => new Product("Case",120,28,5),
+$products = array(
+    new Product("CPU",750,10,1),
+    new Product("RAM",50,2,2),
+    new Product("HDD",70,1,2),
+    new Product("Main",400,3,1),
+    new Product("Keyboadrd",40,8,4),
+    new Product("Mouse",25,50,4),
+    new Product("VGA",60,3,3),
+    new Product("Monitor",120,28,2),
+    new Product("Case",120,28,5),
 );
 function findProduct($listProduct,$price)
 {
-    $arr = array();
-    foreach($listProduct as $key => $value)
+    $resultList = array();
+    foreach($listProduct as $product)
     {
-        if($value->getPrice() <= $price)
+        if($product->getPrice() <= $price)
         {
-            $arr[] = $value;
+            $arr[] = $product;
+            array_push($resultList,$product);
         }
         
     }
     return $arr;
 }
 echo 'Sản phẩm có price nhỏ hơn 200 <br/>'; 
-var_dump(findProduct($product,200));
+var_dump(findProduct($products,200));
 
 
 ?>
