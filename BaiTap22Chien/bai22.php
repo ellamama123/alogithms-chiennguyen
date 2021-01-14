@@ -18,7 +18,7 @@ print('---');
 // đệ quy
 function calMoney($money, $rate,$month)
 {
-    if($month < 1 ) return $money;
+    if($month == 1 ) return $money;
     return calMoney($money, $rate, $month - 1) + calMoney($money, $rate, $month - 1) * ($rate/100);
 
 }
